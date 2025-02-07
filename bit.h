@@ -5,16 +5,17 @@
 #include <bitset>
 #include <vector>
 #include <immintrin.h>
+#include <stddef.h>
 #include <stdint.h>
 
-template<int W>
+template<size_t W>
 std::bitset<W> to_bitset(uint8_t c) {
    std::bitset<W> res;
    res[c] = true;
    return res;
 }
 
-template<int W>
+template<size_t W>
 std::vector<std::bitset<W>> to_bitset_vector(const std::vector<uint8_t>& v) {
    std::vector<std::bitset<W>> res;
    res.reserve(v.size( ));
@@ -24,12 +25,16 @@ std::vector<std::bitset<W>> to_bitset_vector(const std::vector<uint8_t>& v) {
    return res;
 }
 
-std::bitset<32> bit_permute(std::bitset<32> b, const std::array<uint8_t, 32>& indices) {
-   return _cvtmask32_u32(_mm256_bitshuffle_epi64_mask(_mm256_set1_epi64x(b.to_ulong( )), _mm256_loadu_si256((const __m256i*)indices.data( ))));
-}
+#if defined(__AVX512BITALG__) && defined(__AVX512VL__)
+   template<size_t W>
+   std::bitset<W> bit_permute(std::bitset<W> b, const std::array<uint8_t, W>& indices) requires (W <= 32) {
+      return _cvtmask32_u32(_mm256_bitshuffle_epi64_mask(_mm256_set1_epi64x(b.to_ulong( )), _mm256_loadu_si256((const __m256i*)indices.data( ))));
+   }
 
-std::bitset<64> bit_permute(std::bitset<64> b, const std::array<uint8_t, 64>& indices) {
-   return _cvtmask64_u64(_mm512_bitshuffle_epi64_mask(_mm512_set1_epi64(b.to_ullong( )), _mm512_loadu_si512(indices.data( ))));
-}
+   template<size_t W>
+   std::bitset<W> bit_permute(std::bitset<W> b, const std::array<uint8_t, W>& indices) requires (W <= 64 && W > 32) {
+      return _cvtmask64_u64(_mm512_bitshuffle_epi64_mask(_mm512_set1_epi64(b.to_ullong( )), _mm512_loadu_si512(indices.data( ))));
+   }
+#endif
 
 #endif

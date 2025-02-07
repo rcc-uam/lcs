@@ -5,6 +5,7 @@
 #include <algorithm>
 #include <utility>
 #include <vector>
+#include <stddef.h>
 #include <stdint.h>
 
 template<typename TM>
@@ -37,7 +38,7 @@ int chin_poon_main(const std::vector<uint8_t>& a, const std::vector<uint8_t>& b,
    }
 }
 
-template<int W>
+template<size_t W>
 class chin_poon_topmost {
    next_distinct<W> distinct_a;
    closest_occurrence<W> closest_b;
@@ -61,7 +62,7 @@ public:
    }
 };
 
-template<int W>
+template<size_t W>
 int lcs_cp(const std::vector<uint8_t>& a, const std::vector<uint8_t>& b) {
    return chin_poon_main(a, b, chin_poon_topmost<W>(a, b));
 }

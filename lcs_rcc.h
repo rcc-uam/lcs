@@ -9,9 +9,10 @@
 #include <bit>
 #include <utility>
 #include <vector>
+#include <stddef.h>
 #include <stdint.h>
 
-template<int W>
+template<size_t W>
 class rcc0_topmost {
    next_distinct<W> distinct_a, distinct_b;
 
@@ -42,7 +43,13 @@ public:
    }
 };
 
-template<int W>
+template<size_t W>
+int lcs_rcc0(const std::vector<uint8_t>& a, const std::vector<uint8_t>& b) {
+   return chin_poon_main(a, b, rcc0_topmost<W>(a, b));
+}
+
+
+template<size_t W>
 class rcc1_topmost {
    next_distinct<W> distinct_a;
    sparse_tree<W> sparse_b;
@@ -68,43 +75,41 @@ public:
    }
 };
 
-template<int W>
-class rcc2_topmost {
-   sparse_tree<W> sparse_a, sparse_b;
-   order_distinct<W> order_a;
-   closest_occurrence<W> closest_a, closest_b;
-
-public:
-   rcc2_topmost(const std::vector<uint8_t>& a, const std::vector<uint8_t>& b)
-   : sparse_a(a), sparse_b(b), order_a(a), closest_a(a), closest_b(b) {
-   }
-
-   std::pair<int, int> operator()(const std::vector<uint8_t>& a, const std::vector<uint8_t>& b, int ai, int af, int bi, int bf) const {
-      if (ai != af && bi != bf) {
-         auto common_chars = sparse_a.query(ai, af) & sparse_b.query(bi, bf);
-         if (common_chars.any( )) {
-            const auto& list_a = order_a.query(ai);
-            auto first_a = std::countr_zero(bit_permute(common_chars, list_a).to_ullong( ));
-            return { closest_a.query(ai, list_a[first_a]), closest_b.query(bi, list_a[first_a]) };
-         }
-      }
-      return { af, bf };
-   }
-};
-
-template<int W>
-int lcs_rcc0(const std::vector<uint8_t>& a, const std::vector<uint8_t>& b) {
-   return chin_poon_main(a, b, rcc0_topmost<W>(a, b));
-}
-
-template<int W>
+template<size_t W>
 int lcs_rcc1(const std::vector<uint8_t>& a, const std::vector<uint8_t>& b) {
    return chin_poon_main(a, b, rcc1_topmost<W>(a, b));
 }
 
-template<int W>
-int lcs_rcc2(const std::vector<uint8_t>& a, const std::vector<uint8_t>& b) {
-   return chin_poon_main(a, b, rcc2_topmost<W>(a, b));
-}
+
+#if defined(__AVX512BITALG__) && defined(__AVX512VL__)
+   template<size_t W>
+   class rcc2_topmost {
+      sparse_tree<W> sparse_a, sparse_b;
+      order_distinct<W> order_a;
+      closest_occurrence<W> closest_a, closest_b;
+
+   public:
+      rcc2_topmost(const std::vector<uint8_t>& a, const std::vector<uint8_t>& b)
+      : sparse_a(a), sparse_b(b), order_a(a), closest_a(a), closest_b(b) {
+      }
+
+      std::pair<int, int> operator()(const std::vector<uint8_t>& a, const std::vector<uint8_t>& b, int ai, int af, int bi, int bf) const {
+         if (ai != af && bi != bf) {
+            auto common_chars = sparse_a.query(ai, af) & sparse_b.query(bi, bf);
+            if (common_chars.any( )) {
+               const auto& list_a = order_a.query(ai);
+               auto first_a = std::countr_zero(bit_permute(common_chars, list_a).to_ullong( ));
+               return { closest_a.query(ai, list_a[first_a]), closest_b.query(bi, list_a[first_a]) };
+            }
+         }
+         return { af, bf };
+      }
+   };
+
+   template<size_t W>
+   int lcs_rcc2(const std::vector<uint8_t>& a, const std::vector<uint8_t>& b) {
+      return chin_poon_main(a, b, rcc2_topmost<W>(a, b));
+   }
+#endif
 
 #endif

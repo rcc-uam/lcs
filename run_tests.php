@@ -6,7 +6,7 @@
    foreach ($dirs as $directory) {
       echo "*** Running $directory...\n";
       $files = glob("$directory/*");
-      for ($i = 0; $i < count($files); ++$i) {
+      for ($i = 1; $i < count($files); ++$i) {
          $file_a = $files[0];
          $file_b = $files[$i];
          echo "***   $file_a VS $file_b\n";

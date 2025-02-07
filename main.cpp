@@ -2,6 +2,7 @@
 #include "lcs_rcc.h"
 #include "lcs_wagner_fischer.h"
 #include <algorithm>
+#include <ctime>
 #include <fstream>
 #include <functional>
 #include <iostream>
@@ -64,11 +65,15 @@ int main(int argc, const char* argv[]) {
             { "RCC-0",          lcs_rcc0<W> },
             { "RCC-1",          lcs_rcc1<W> }
          };
-         if constexpr(W == 32 || W == 64) {
-            algorithms.emplace_back("RCC-2", lcs_rcc2<W>);
-         } else {
-            std::cout << "RCC-2 algorithm sample implementation only supports sigma = 32, 64\n";
-         }
+         #if defined(__AVX512BITALG__) && defined(__AVX512VL__)
+            if constexpr(W <= 64) {
+               algorithms.emplace_back("RCC-2", lcs_rcc2<W>);
+            } else {
+               std::cout << "RCC-2 algorithm sample implementation only supports sigma <= 64\n";
+            }
+         #else
+            std::cout << "RCC-2 algorithm not supported with the current CPU architecture\n";
+         #endif
          return false;
       }
       return true;

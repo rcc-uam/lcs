@@ -10,9 +10,10 @@
 #include <iterator>
 #include <numeric>
 #include <vector>
+#include <stddef.h>
 #include <stdint.h>
 
-template<int W>
+template<size_t W>
 class closest_occurrence {    // .query(i, c) returns the index of the closest occurrence of c from s[i] to s[s.size( ) - 1], in order of occurrence
    std::vector<std::array<int, W>> table;
 
@@ -33,7 +34,7 @@ public:
    }
 };
 
-template<int W>
+template<size_t W>
 class next_distinct {      // .query(i) returns the list of distinct chars that appear from s[i] to s[s.size( ) - 1], in order of occurrence; each char is accompanied by its index and a prefix set union from s[i] to s[index]
    struct entry {
       uint8_t symbol;
@@ -64,7 +65,7 @@ public:
    }
 };
 
-template<int W>
+template<size_t W>
 class order_distinct {     // .query(i) returns the list of distinct chars that appear from s[i] to s[s.size( ) - 1], in order of occurrence
    std::vector<std::array<uint8_t, W>> lists;
 
@@ -87,7 +88,7 @@ public:
    }
 };
 
-template<int W>
+template<size_t W>
 class sparse_table {       // .query(i, j) returns the set union of chars that appear from s[i] to s[j - 1]
    std::vector<std::vector<std::bitset<W>>> table;
 
@@ -118,7 +119,7 @@ public:
    }
 };
 
-template<int W>
+template<size_t W>
 class sparse_tree {       // .query(i, j) returns the set union of chars that appear from s[i] to s[j - 1]
    struct node_segment {
       std::vector<std::bitset<W>> prefix, suffix;
