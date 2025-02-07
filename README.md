@@ -21,7 +21,7 @@ This repository provides a sample implementation of the longest common subsequen
 * `main.cpp`: A C++ program that computes the length of the LCS of two strings. The strings are read from files whose paths are provided via `argv`. It computes the LCS using the algorithms from Wagner and Fischer, Chin and Poon, and Castro.
 * `run_tests.php`: A PHP program that invokes the main C++ LCS program against string pairs that were created by the generator.
 
-The C++ programs may be compiled with G++ 14.2 using the `-std=c++23 -O3 -march=icelake-client` flags. The PHP programs may be run under PHP 8.2. There are no additional dependencies. The provided algorithms were not optimized for microbenchmarking purposes but for readability in order to easily determine their asymptotic complexities.
+The C++ programs may be compiled with G++ 14.2 using the `-std=c++23 -O3 -march=icelake-client` flags. The PHP programs may be run under PHP 8.2. There are no additional dependencies. The provided algorithms were not optimized for microbenchmarking purposes but for readability, in order to easily determine their asymptotic complexities.
 
   [1]: https://www.semanticscholar.org/paper/New-Algorithms-for-the-Longest-Common-Subsequence-Rick/28568a5d078ee484a30ef1b261a560612f5fc999
   [2]: https://arxiv.org/abs/2406.06321
