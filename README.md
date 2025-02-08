@@ -20,8 +20,18 @@ This repository provides a sample implementation of the longest common subsequen
   - `rcc2_topmost`: Implements the second contribution from the paper "The Longest Common Subsequence Problem for Small Alphabets in the Word RAM". It implements *topmost* in $O(1)$ time when $s \leq 64$. It requires a CPU with the *AVX-512 Bit Algorithms* instruction set that was introduced in the Intel Icelake architecture.
 * `main.cpp`: A C++ program that computes the length of the LCS of two strings. The strings are read from files whose paths are provided via `argv`. It computes the LCS using the algorithms from Wagner and Fischer, Chin and Poon, and Castro.
 * `run_tests.php`: A PHP program that invokes the main C++ LCS program against string pairs that were created by the generator.
+* `run_tests.php_emulator`: A PHP program that uses the *Intel® Software Development Emulator* to invoke the main C++ LCS program against string pairs that were created by the generator. See below.
 
-The C++ programs may be compiled with G++ 14.2 using the `-std=c++23 -O3 -march=icelake-client` flags. The PHP programs may be run under PHP 8.2. There are no additional dependencies. The provided algorithms were not optimized for microbenchmarking purposes but for readability, in order to easily determine their asymptotic complexities.
+The C++ programs may be compiled with G++ 14.2 using the `-std=c++23 -O3 -march=icelake-client` flags. The PHP programs may be run under PHP 8.2. The provided algorithms were not optimized for microbenchmarking purposes but for readability, in order to easily determine their asymptotic complexities.
+
+For CPUs that do not support the *AVX-512 Bit Algorithms* instruction set, an alternative is to use the *Intel® Software Development Emulator*. For example, under Linux you can install and run it as follows:
+
+```
+wget https://downloadmirror.intel.com/843185/sde-external-9.48.0-2024-11-25-lin.tar.xz
+tar -xvf sde-external-9.48.0-2024-11-25-lin.tar.xz
+mv sde-external-9.48.0-2024-11-25-lin /usr/bin/sde
+/usr/bin/sde/sde -icl -- ./main filepath1 filepath2
+```
 
   [1]: https://www.semanticscholar.org/paper/New-Algorithms-for-the-Longest-Common-Subsequence-Rick/28568a5d078ee484a30ef1b261a560612f5fc999
   [2]: https://arxiv.org/abs/2406.06321

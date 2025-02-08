@@ -16,18 +16,18 @@ int chin_poon_main(const std::vector<uint8_t>& a, const std::vector<uint8_t>& b,
 
    for (int length = 0; ; ++length) {
       next_contour.second = 0;
-      for (int i = 0, bf = b.size( ); i < current_contour.second; ++i) {
+      for (int i = 0, bj = b.size( ); i < current_contour.second; ++i) {
          int ai = current_contour.first[i].first + 1, bi = current_contour.first[i].second + 1;
-         int af = (i + 1 < current_contour.second ? current_contour.first[i + 1].first + 1 : a.size( ));
+         int aj = (i + 1 < current_contour.second ? current_contour.first[i + 1].first + 1 : a.size( ));
 
          for (;;) {
-            auto [aj, bj] = topmost(a, b, ai, af, bi, bf);
-            if (aj == af) {
+            auto [ak, bk] = topmost(a, b, ai, aj, bi, bj);
+            if (ak == aj) {
                break;
             }
-            next_contour.first[next_contour.second++] = { aj, bj };
-            ai = aj + 1;
-            bf = bj;
+            next_contour.first[next_contour.second++] = { ak, bk };
+            ai = ak + 1;
+            bj = bk;
          }
       }
 
@@ -48,17 +48,17 @@ public:
    : distinct_a(a), closest_b(b) {
    }
 
-   std::pair<int, int> operator()(const std::vector<uint8_t>& a, const std::vector<uint8_t>& b, int ai, int af, int bi, int bf) const {
-      if (ai != af && bi != bf) {
+   std::pair<int, int> operator()(const std::vector<uint8_t>& a, const std::vector<uint8_t>& b, int ai, int aj, int bi, int bj) const {
+      if (ai != aj && bi != bj) {
          const auto& list_a = distinct_a.query(ai);
-         for (auto it = list_a.begin( ); it != list_a.end( ) && it->index < af; ++it) {
-            int bj = closest_b.query(bi, it->symbol);
-            if (bj < bf) {
-               return { it->index, bj };
+         for (auto it = list_a.begin( ); it != list_a.end( ) && it->index < aj; ++it) {
+            int bk = closest_b.query(bi, it->symbol);
+            if (bk < bj) {
+               return { it->index, bk };
             }
          }
       }
-      return { af, bf };
+      return { aj, bj };
    }
 };
 

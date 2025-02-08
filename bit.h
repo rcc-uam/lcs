@@ -1,5 +1,5 @@
-#ifndef BIT_PERMUTATION_H
-#define BIT_PERMUTATION_H
+#ifndef BIT_H
+#define BIT_H
 
 #include <array>
 #include <bitset>

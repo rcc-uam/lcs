@@ -21,25 +21,25 @@ public:
    : distinct_a(a), distinct_b(b) {
    }
 
-   std::pair<int, int> operator()(const std::vector<uint8_t>& a, const std::vector<uint8_t>& b, int ai, int af, int bi, int bf) const {
-      if (ai != af && bi != bf) {
+   std::pair<int, int> operator()(const std::vector<uint8_t>& a, const std::vector<uint8_t>& b, int ai, int aj, int bi, int bj) const {
+      if (ai != aj && bi != bj) {
          const auto& list_a = distinct_a.query(ai);
          const auto& list_b = distinct_b.query(bi);
          auto tb = std::partition_point(list_b.begin( ), list_b.end( ), [&](const auto& entry) {
-            return entry.index < bf;
+            return entry.index < bj;
          });
          auto ta = std::partition_point(list_a.begin( ), list_a.end( ), [&](const auto& entry) {
             return (entry.set & std::prev(tb)->set) == 0;
          });
-         if (ta == list_a.end( ) || ta->index >= af) {
-            return { af, bf };
+         if (ta == list_a.end( ) || ta->index >= aj) {
+            return { aj, bj };
          } else {
             return { ta->index, std::partition_point(list_b.begin( ), list_b.end( ), [&](const auto& entry) {
                return !entry.set[ta->symbol];
             })->index };
          }
       }
-      return { af, bf };
+      return { aj, bj };
    }
 };
 
@@ -60,18 +60,18 @@ public:
    : distinct_a(a), sparse_b(b), closest_b(b) {
    }
 
-   std::pair<int, int> operator()(const std::vector<uint8_t>& a, const std::vector<uint8_t>& b, int ai, int af, int bi, int bf) const {
-      if (ai != af && bi != bf) {
+   std::pair<int, int> operator()(const std::vector<uint8_t>& a, const std::vector<uint8_t>& b, int ai, int aj, int bi, int bj) const {
+      if (ai != aj && bi != bj) {
          const auto& list_a = distinct_a.query(ai);
-         auto chars_b = sparse_b.query(bi, bf);
+         auto chars_b = sparse_b.query(bi, bj);
          auto ta = doubling_search(list_a.begin( ), list_a.end( ), [&](const auto& entry) {
-            return entry.index >= af || (entry.set & chars_b) != 0;
+            return entry.index >= aj || (entry.set & chars_b) != 0;
          });
-         if (ta != list_a.end( ) && ta->index < af) {
+         if (ta != list_a.end( ) && ta->index < aj) {
             return { ta->index, closest_b.query(bi, ta->symbol) };
          }
       }
-      return { af, bf };
+      return { aj, bj };
    }
 };
 
@@ -93,16 +93,16 @@ int lcs_rcc1(const std::vector<uint8_t>& a, const std::vector<uint8_t>& b) {
       : sparse_a(a), sparse_b(b), order_a(a), closest_a(a), closest_b(b) {
       }
 
-      std::pair<int, int> operator()(const std::vector<uint8_t>& a, const std::vector<uint8_t>& b, int ai, int af, int bi, int bf) const {
-         if (ai != af && bi != bf) {
-            auto common_chars = sparse_a.query(ai, af) & sparse_b.query(bi, bf);
+      std::pair<int, int> operator()(const std::vector<uint8_t>& a, const std::vector<uint8_t>& b, int ai, int aj, int bi, int bj) const {
+         if (ai != aj && bi != bj) {
+            auto common_chars = sparse_a.query(ai, aj) & sparse_b.query(bi, bj);
             if (common_chars.any( )) {
                const auto& list_a = order_a.query(ai);
                auto first_a = std::countr_zero(bit_permute(common_chars, list_a).to_ullong( ));
                return { closest_a.query(ai, list_a[first_a]), closest_b.query(bi, list_a[first_a]) };
             }
          }
-         return { af, bf };
+         return { aj, bj };
       }
    };
 
