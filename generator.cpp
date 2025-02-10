@@ -28,7 +28,7 @@ int main( ) {
       }
    }
 
-   std::string path = std::format("./test_{}_{}_{}", size, sigma, percentage);
+   std::string path = std::format("./tests/test_{}_{}_{}", size, sigma, percentage);
    std::filesystem::create_directory(path);
    for (int i = 0; i < 2; ++i) {
       std::ofstream file(path + "/" + std::to_string(i) + ".dat", std::ios::binary | std::ios::out);

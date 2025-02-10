@@ -1,0 +1,350 @@
+*** Running tests/test_50000_4_0...
+***   tests/test_50000_4_0/0.dat VS tests/test_50000_4_0/1.dat
+Computing alphabet size: 4
+Computing Wagner-Fischer: 0 in 2.00945 seconds
+Computing Chin & Poon: 0 in 0.021414 seconds
+Computing RCC-0: 0 in 0.018098 seconds
+Computing RCC-1: 0 in 0.050885 seconds
+Computing RCC-2: 0 in 0.040162 seconds
+
+
+*** Running tests/test_50000_4_25...
+***   tests/test_50000_4_25/0.dat VS tests/test_50000_4_25/1.dat
+Computing alphabet size: 4
+Computing Wagner-Fischer: 12366 in 3.53396 seconds
+Computing Chin & Poon: 12366 in 0.220807 seconds
+Computing RCC-0: 12366 in 0.46304 seconds
+Computing RCC-1: 12366 in 1.21241 seconds
+Computing RCC-2: 12366 in 2.31951 seconds
+
+
+*** Running tests/test_50000_4_50...
+***   tests/test_50000_4_50/0.dat VS tests/test_50000_4_50/1.dat
+Computing alphabet size: 4
+Computing Wagner-Fischer: 25041 in 5.11593 seconds
+Computing Chin & Poon: 25041 in 0.849113 seconds
+Computing RCC-0: 25041 in 1.70927 seconds
+Computing RCC-1: 25041 in 3.18572 seconds
+Computing RCC-2: 25041 in 7.7031 seconds
+
+
+*** Running tests/test_50000_4_75...
+***   tests/test_50000_4_75/0.dat VS tests/test_50000_4_75/1.dat
+Computing alphabet size: 4
+Computing Wagner-Fischer: 37524 in 6.75053 seconds
+Computing Chin & Poon: 37524 in 1.02419 seconds
+Computing RCC-0: 37524 in 2.39387 seconds
+Computing RCC-1: 37524 in 4.21957 seconds
+Computing RCC-2: 37524 in 8.99474 seconds
+
+
+*** Running tests/test_50000_4_100...
+***   tests/test_50000_4_100/0.dat VS tests/test_50000_4_100/1.dat
+Computing alphabet size: 2
+Computing Wagner-Fischer: 50000 in 7.94001 seconds
+Computing Chin & Poon: 50000 in 0.023304 seconds
+Computing RCC-0: 50000 in 0.020451 seconds
+Computing RCC-1: 50000 in 0.057147 seconds
+Computing RCC-2: 50000 in 0.054489 seconds
+
+
+*** Running tests/test_50000_8_0...
+***   tests/test_50000_8_0/0.dat VS tests/test_50000_8_0/1.dat
+Computing alphabet size: 8
+Computing Wagner-Fischer: 0 in 2.02982 seconds
+Computing Chin & Poon: 0 in 0.029671 seconds
+Computing RCC-0: 0 in 0.024089 seconds
+Computing RCC-1: 0 in 0.052327 seconds
+Computing RCC-2: 0 in 0.046556 seconds
+
+
+*** Running tests/test_50000_8_25...
+***   tests/test_50000_8_25/0.dat VS tests/test_50000_8_25/1.dat
+Computing alphabet size: 8
+Computing Wagner-Fischer: 12521 in 2.88379 seconds
+Computing Chin & Poon: 12521 in 0.574439 seconds
+Computing RCC-0: 12521 in 0.98247 seconds
+Computing RCC-1: 12521 in 2.19894 seconds
+Computing RCC-2: 12521 in 4.25709 seconds
+
+
+*** Running tests/test_50000_8_50...
+***   tests/test_50000_8_50/0.dat VS tests/test_50000_8_50/1.dat
+Computing alphabet size: 8
+Computing Wagner-Fischer: 24776 in 3.65533 seconds
+Computing Chin & Poon: 24776 in 1.11001 seconds
+Computing RCC-0: 24776 in 2.48531 seconds
+Computing RCC-1: 24776 in 4.59014 seconds
+Computing RCC-2: 24776 in 7.95284 seconds
+
+
+*** Running tests/test_50000_8_75...
+***   tests/test_50000_8_75/0.dat VS tests/test_50000_8_75/1.dat
+Computing alphabet size: 8
+Computing Wagner-Fischer: 37291 in 5.08406 seconds
+Computing Chin & Poon: 37291 in 0.719365 seconds
+Computing RCC-0: 37291 in 2.42547 seconds
+Computing RCC-1: 37291 in 4.36737 seconds
+Computing RCC-2: 37291 in 7.22651 seconds
+
+
+*** Running tests/test_50000_8_100...
+***   tests/test_50000_8_100/0.dat VS tests/test_50000_8_100/1.dat
+Computing alphabet size: 4
+Computing Wagner-Fischer: 50000 in 5.31874 seconds
+Computing Chin & Poon: 50000 in 0.027116 seconds
+Computing RCC-0: 50000 in 0.024905 seconds
+Computing RCC-1: 50000 in 0.055557 seconds
+Computing RCC-2: 50000 in 0.057665 seconds
+
+
+*** Running tests/test_50000_16_0...
+***   tests/test_50000_16_0/0.dat VS tests/test_50000_16_0/1.dat
+Computing alphabet size: 16
+Computing Wagner-Fischer: 0 in 2.04912 seconds
+Computing Chin & Poon: 0 in 0.03885 seconds
+Computing RCC-0: 0 in 0.038451 seconds
+Computing RCC-1: 0 in 0.061768 seconds
+Computing RCC-2: 0 in 0.051016 seconds
+
+
+*** Running tests/test_50000_16_25...
+***   tests/test_50000_16_25/0.dat VS tests/test_50000_16_25/1.dat
+Computing alphabet size: 16
+Computing Wagner-Fischer: 12536 in 2.80193 seconds
+Computing Chin & Poon: 12536 in 0.633213 seconds
+Computing RCC-0: 12536 in 1.23628 seconds
+Computing RCC-1: 12536 in 2.48176 seconds
+Computing RCC-2: 12536 in 4.09504 seconds
+
+
+*** Running tests/test_50000_16_50...
+***   tests/test_50000_16_50/0.dat VS tests/test_50000_16_50/1.dat
+Computing alphabet size: 16
+Computing Wagner-Fischer: 24898 in 3.38372 seconds
+Computing Chin & Poon: 24898 in 0.783647 seconds
+Computing RCC-0: 24898 in 2.05913 seconds
+Computing RCC-1: 24898 in 3.67404 seconds
+Computing RCC-2: 24898 in 5.7875 seconds
+
+
+*** Running tests/test_50000_16_75...
+***   tests/test_50000_16_75/0.dat VS tests/test_50000_16_75/1.dat
+Computing alphabet size: 16
+Computing Wagner-Fischer: 37425 in 3.27124 seconds
+Computing Chin & Poon: 37425 in 0.404485 seconds
+Computing RCC-0: 37425 in 1.55236 seconds
+Computing RCC-1: 37425 in 2.58435 seconds
+Computing RCC-2: 37425 in 4.01208 seconds
+
+
+*** Running tests/test_50000_16_100...
+***   tests/test_50000_16_100/0.dat VS tests/test_50000_16_100/1.dat
+Computing alphabet size: 8
+Computing Wagner-Fischer: 50000 in 3.66598 seconds
+Computing Chin & Poon: 50000 in 0.039509 seconds
+Computing RCC-0: 50000 in 0.042403 seconds
+Computing RCC-1: 50000 in 0.068099 seconds
+Computing RCC-2: 50000 in 0.074097 seconds
+
+
+*** Running tests/test_50000_32_0...
+***   tests/test_50000_32_0/0.dat VS tests/test_50000_32_0/1.dat
+Computing alphabet size: 32
+Computing Wagner-Fischer: 0 in 2.02292 seconds
+Computing Chin & Poon: 0 in 0.050361 seconds
+Computing RCC-0: 0 in 0.054772 seconds
+Computing RCC-1: 0 in 0.072968 seconds
+Computing RCC-2: 0 in 0.046439 seconds
+
+
+*** Running tests/test_50000_32_25...
+***   tests/test_50000_32_25/0.dat VS tests/test_50000_32_25/1.dat
+Computing alphabet size: 32
+Computing Wagner-Fischer: 12553 in 2.41372 seconds
+Computing Chin & Poon: 12553 in 0.463154 seconds
+Computing RCC-0: 12553 in 1.03652 seconds
+Computing RCC-1: 12553 in 1.80061 seconds
+Computing RCC-2: 12553 in 2.9236 seconds
+
+
+*** Running tests/test_50000_32_50...
+***   tests/test_50000_32_50/0.dat VS tests/test_50000_32_50/1.dat
+Computing alphabet size: 32
+Computing Wagner-Fischer: 24790 in 2.58397 seconds
+Computing Chin & Poon: 24790 in 0.439767 seconds
+Computing RCC-0: 24790 in 1.47893 seconds
+Computing RCC-1: 24790 in 2.23264 seconds
+Computing RCC-2: 24790 in 3.4793 seconds
+
+
+*** Running tests/test_50000_32_75...
+***   tests/test_50000_32_75/0.dat VS tests/test_50000_32_75/1.dat
+Computing alphabet size: 32
+Computing Wagner-Fischer: 37434 in 2.67388 seconds
+Computing Chin & Poon: 37434 in 0.245439 seconds
+Computing RCC-0: 37434 in 1.16963 seconds
+Computing RCC-1: 37434 in 1.40675 seconds
+Computing RCC-2: 37434 in 2.66671 seconds
+
+
+*** Running tests/test_50000_32_100...
+***   tests/test_50000_32_100/0.dat VS tests/test_50000_32_100/1.dat
+Computing alphabet size: 16
+Computing Wagner-Fischer: 50000 in 3.04791 seconds
+Computing Chin & Poon: 50000 in 0.050164 seconds
+Computing RCC-0: 50000 in 0.054929 seconds
+Computing RCC-1: 50000 in 0.076445 seconds
+Computing RCC-2: 50000 in 0.05816 seconds
+
+
+*** Running tests/test_50000_64_0...
+***   tests/test_50000_64_0/0.dat VS tests/test_50000_64_0/1.dat
+Computing alphabet size: 64
+Computing Wagner-Fischer: 0 in 2.01218 seconds
+Computing Chin & Poon: 0 in 0.078153 seconds
+Computing RCC-0: 0 in 0.09711 seconds
+Computing RCC-1: 0 in 0.094556 seconds
+Computing RCC-2: 0 in 0.050398 seconds
+
+
+*** Running tests/test_50000_64_25...
+***   tests/test_50000_64_25/0.dat VS tests/test_50000_64_25/1.dat
+Computing alphabet size: 64
+Computing Wagner-Fischer: 12335 in 2.20066 seconds
+Computing Chin & Poon: 12335 in 0.329464 seconds
+Computing RCC-0: 12335 in 0.837344 seconds
+Computing RCC-1: 12335 in 1.06773 seconds
+Computing RCC-2: 12335 in 1.69748 seconds
+
+
+*** Running tests/test_50000_64_50...
+***   tests/test_50000_64_50/0.dat VS tests/test_50000_64_50/1.dat
+Computing alphabet size: 64
+Computing Wagner-Fischer: 24840 in 2.39683 seconds
+Computing Chin & Poon: 24840 in 0.293951 seconds
+Computing RCC-0: 24840 in 1.21999 seconds
+Computing RCC-1: 24840 in 1.20107 seconds
+Computing RCC-2: 24840 in 1.91226 seconds
+
+
+*** Running tests/test_50000_64_75...
+***   tests/test_50000_64_75/0.dat VS tests/test_50000_64_75/1.dat
+Computing alphabet size: 64
+Computing Wagner-Fischer: 37356 in 2.52699 seconds
+Computing Chin & Poon: 37356 in 0.181831 seconds
+Computing RCC-0: 37356 in 0.950724 seconds
+Computing RCC-1: 37356 in 0.793024 seconds
+Computing RCC-2: 37356 in 1.2617 seconds
+
+
+*** Running tests/test_50000_64_100...
+***   tests/test_50000_64_100/0.dat VS tests/test_50000_64_100/1.dat
+Computing alphabet size: 32
+Computing Wagner-Fischer: 50000 in 2.5803 seconds
+Computing Chin & Poon: 50000 in 0.07543 seconds
+Computing RCC-0: 50000 in 0.098123 seconds
+Computing RCC-1: 50000 in 0.094235 seconds
+Computing RCC-2: 50000 in 0.063169 seconds
+
+
+*** Running tests/test_50000_128_0...
+***   tests/test_50000_128_0/0.dat VS tests/test_50000_128_0/1.dat
+Computing alphabet size: 128
+RCC-2 algorithm sample implementation only supports sigma <= 64
+Computing Wagner-Fischer: 0 in 2.17002 seconds
+Computing Chin & Poon: 0 in 0.150385 seconds
+Computing RCC-0: 0 in 0.236486 seconds
+Computing RCC-1: 0 in 0.164069 seconds
+
+
+*** Running tests/test_50000_128_25...
+***   tests/test_50000_128_25/0.dat VS tests/test_50000_128_25/1.dat
+Computing alphabet size: 128
+RCC-2 algorithm sample implementation only supports sigma <= 64
+Computing Wagner-Fischer: 12584 in 2.05572 seconds
+Computing Chin & Poon: 12584 in 0.27474 seconds
+Computing RCC-0: 12584 in 1.16951 seconds
+Computing RCC-1: 12584 in 1.08377 seconds
+
+
+*** Running tests/test_50000_128_50...
+***   tests/test_50000_128_50/0.dat VS tests/test_50000_128_50/1.dat
+Computing alphabet size: 128
+RCC-2 algorithm sample implementation only supports sigma <= 64
+Computing Wagner-Fischer: 24889 in 2.19843 seconds
+Computing Chin & Poon: 24889 in 0.269962 seconds
+Computing RCC-0: 24889 in 1.58947 seconds
+Computing RCC-1: 24889 in 1.08685 seconds
+
+
+*** Running tests/test_50000_128_75...
+***   tests/test_50000_128_75/0.dat VS tests/test_50000_128_75/1.dat
+Computing alphabet size: 128
+RCC-2 algorithm sample implementation only supports sigma <= 64
+Computing Wagner-Fischer: 37457 in 2.29365 seconds
+Computing Chin & Poon: 37457 in 0.236055 seconds
+Computing RCC-0: 37457 in 1.53291 seconds
+Computing RCC-1: 37457 in 0.781091 seconds
+
+
+*** Running tests/test_50000_128_100...
+***   tests/test_50000_128_100/0.dat VS tests/test_50000_128_100/1.dat
+Computing alphabet size: 64
+Computing Wagner-Fischer: 50000 in 2.23266 seconds
+Computing Chin & Poon: 50000 in 0.117506 seconds
+Computing RCC-0: 50000 in 0.171939 seconds
+Computing RCC-1: 50000 in 0.132988 seconds
+Computing RCC-2: 50000 in 0.074169 seconds
+
+
+*** Running tests/test_50000_256_0...
+***   tests/test_50000_256_0/0.dat VS tests/test_50000_256_0/1.dat
+Computing alphabet size: 256
+RCC-2 algorithm sample implementation only supports sigma <= 64
+Computing Wagner-Fischer: 0 in 2.21387 seconds
+Computing Chin & Poon: 0 in 0.698026 seconds
+Computing RCC-0: 0 in 1.2516 seconds
+Computing RCC-1: 0 in 0.671929 seconds
+
+
+*** Running tests/test_50000_256_25...
+***   tests/test_50000_256_25/0.dat VS tests/test_50000_256_25/1.dat
+Computing alphabet size: 256
+RCC-2 algorithm sample implementation only supports sigma <= 64
+Computing Wagner-Fischer: 12272 in 2.25062 seconds
+Computing Chin & Poon: 12272 in 0.803118 seconds
+Computing RCC-0: 12272 in 2.55759 seconds
+Computing RCC-1: 12272 in 2.23164 seconds
+
+
+*** Running tests/test_50000_256_50...
+***   tests/test_50000_256_50/0.dat VS tests/test_50000_256_50/1.dat
+Computing alphabet size: 256
+RCC-2 algorithm sample implementation only supports sigma <= 64
+Computing Wagner-Fischer: 24855 in 2.10523 seconds
+Computing Chin & Poon: 24855 in 0.788643 seconds
+Computing RCC-0: 24855 in 3.06708 seconds
+Computing RCC-1: 24855 in 2.5169 seconds
+
+
+*** Running tests/test_50000_256_75...
+***   tests/test_50000_256_75/0.dat VS tests/test_50000_256_75/1.dat
+Computing alphabet size: 256
+RCC-2 algorithm sample implementation only supports sigma <= 64
+Computing Wagner-Fischer: 37492 in 2.08345 seconds
+Computing Chin & Poon: 37492 in 0.749198 seconds
+Computing RCC-0: 37492 in 2.68525 seconds
+Computing RCC-1: 37492 in 1.7243 seconds
+
+
+*** Running tests/test_50000_256_100...
+***   tests/test_50000_256_100/0.dat VS tests/test_50000_256_100/1.dat
+Computing alphabet size: 128
+RCC-2 algorithm sample implementation only supports sigma <= 64
+Computing Wagner-Fischer: 50000 in 2.29518 seconds
+Computing Chin & Poon: 50000 in 0.387306 seconds
+Computing RCC-0: 50000 in 0.708545 seconds
+Computing RCC-1: 50000 in 0.379455 seconds
+
+

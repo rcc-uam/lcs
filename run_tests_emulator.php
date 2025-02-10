@@ -1,6 +1,6 @@
 <?php
    $main = (PHP_OS_FAMILY == 'Windows' ? 'main.exe' : './main');
-   $dirs = glob('test_*');
+   $dirs = glob('tests/*');
    
    natsort($dirs);
    foreach ($dirs as $directory) {

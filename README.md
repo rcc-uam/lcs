@@ -22,9 +22,7 @@ This repository provides a sample implementation of the longest common subsequen
 * `run_tests.php`: A PHP program that invokes the main C++ LCS program against string pairs that were created by the generator.
 * `run_tests_emulator.php`: A PHP program that uses the *Intel® Software Development Emulator* to invoke the main C++ LCS program against string pairs that were created by the generator. See below.
 
-The C++ programs may be compiled with G++ 14.2 using the `-std=c++23 -O3 -march=icelake-client` flags. The PHP programs may be run under PHP 8.2. The provided algorithms were not optimized for microbenchmarking purposes but for readability, in order to easily determine their asymptotic complexities.
-
-For CPUs that do not support the *AVX-512 Bit Algorithms* instruction set, an alternative is to use the *Intel® Software Development Emulator*. Under Linux you can install and run it as follows:
+The C++ programs may be compiled with G++ 14.2 using the `-std=c++23 -O3 -march=icelake-client` flags. The PHP programs may be run under PHP 8.2. For CPUs that do not support the *AVX-512 Bit Algorithms* instruction set, an alternative is to use the *Intel® Software Development Emulator*. Under Linux you can install and run it as follows:
 
 ```
 wget https://downloadmirror.intel.com/843185/sde-external-9.48.0-2024-11-25-lin.tar.xz
@@ -32,6 +30,8 @@ tar -xvf sde-external-9.48.0-2024-11-25-lin.tar.xz
 mv sde-external-9.48.0-2024-11-25-lin /usr/bin/sde
 /usr/bin/sde/sde -icl -- ./main filepath1 filepath2
 ```
+
+The provided algorithms were not optimized for microbenchmarking purposes. Although hardware related phenomena may affect the competitiveness of the proposed algorithms (for example, memory effects or processor pipelining), the code favors readability in order to easily determine their asymptotic complexities. Some test cases are also included together with a log file, but the reported times are not conclusive since the tests were run under the *Intel® Software Development Emulator*, which was itself installed under a Linux Virtual machine. 
 
   [1]: https://www.semanticscholar.org/paper/New-Algorithms-for-the-Longest-Common-Subsequence-Rick/28568a5d078ee484a30ef1b261a560612f5fc999
   [2]: https://arxiv.org/abs/2406.06321
