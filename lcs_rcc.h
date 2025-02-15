@@ -14,28 +14,28 @@
 
 template<size_t W>
 class rcc0_topmost {
-   next_distinct<W> distinct_a, distinct_b;
+   distinct_with_prefix<W> distpref_a, distpref_b;
 
 public:
    rcc0_topmost(const std::vector<uint8_t>& a, const std::vector<uint8_t>& b)
-   : distinct_a(a), distinct_b(b) {
+   : distpref_a(a), distpref_b(b) {
    }
 
    std::pair<int, int> operator()(const std::vector<uint8_t>& a, const std::vector<uint8_t>& b, int ai, int aj, int bi, int bj) const {
       if (ai != aj && bi != bj) {
-         const auto& list_a = distinct_a.query(ai);
-         const auto& list_b = distinct_b.query(bi);
+         const auto& list_a = distpref_a.query(ai);
+         const auto& list_b = distpref_b.query(bi);
          auto tb = std::partition_point(list_b.begin( ), list_b.end( ), [&](const auto& entry) {
             return entry.index < bj;
          });
          auto ta = std::partition_point(list_a.begin( ), list_a.end( ), [&](const auto& entry) {
-            return (entry.set & std::prev(tb)->set) == 0;
+            return (entry.seen & std::prev(tb)->seen) == 0;
          });
          if (ta == list_a.end( ) || ta->index >= aj) {
             return { aj, bj };
          } else {
             return { ta->index, std::partition_point(list_b.begin( ), list_b.end( ), [&](const auto& entry) {
-               return !entry.set[ta->symbol];
+               return !entry.seen[a[ta->index]];
             })->index };
          }
       }
@@ -51,24 +51,24 @@ int lcs_rcc0(const std::vector<uint8_t>& a, const std::vector<uint8_t>& b) {
 
 template<size_t W>
 class rcc1_topmost {
-   next_distinct<W> distinct_a;
+   distinct_with_prefix<W> distpref_a;
    sparse_tree<W> sparse_b;
-   closest_occurrence<W> closest_b;
+   closest<W> closest_b;
 
 public:
    rcc1_topmost(const std::vector<uint8_t>& a, const std::vector<uint8_t>& b)
-   : distinct_a(a), sparse_b(b), closest_b(b) {
+   : distpref_a(a), sparse_b(b), closest_b(b) {
    }
 
    std::pair<int, int> operator()(const std::vector<uint8_t>& a, const std::vector<uint8_t>& b, int ai, int aj, int bi, int bj) const {
       if (ai != aj && bi != bj) {
-         const auto& list_a = distinct_a.query(ai);
+         const auto& list_a = distpref_a.query(ai);
          auto chars_b = sparse_b.query(bi, bj);
          auto ta = doubling_search(list_a.begin( ), list_a.end( ), [&](const auto& entry) {
-            return entry.index >= aj || (entry.set & chars_b) != 0;
+            return entry.index >= aj || (entry.seen & chars_b) != 0;
          });
          if (ta != list_a.end( ) && ta->index < aj) {
-            return { ta->index, closest_b.query(bi, ta->symbol) };
+            return { ta->index, closest_b.query(bi, a[ta->index]) };
          }
       }
       return { aj, bj };
@@ -85,8 +85,8 @@ int lcs_rcc1(const std::vector<uint8_t>& a, const std::vector<uint8_t>& b) {
    template<size_t W>
    class rcc2_topmost {
       sparse_tree<W> sparse_a, sparse_b;
-      order_distinct<W> order_a;
-      closest_occurrence<W> closest_a, closest_b;
+      order<W> order_a;
+      closest<W> closest_a, closest_b;
 
    public:
       rcc2_topmost(const std::vector<uint8_t>& a, const std::vector<uint8_t>& b)

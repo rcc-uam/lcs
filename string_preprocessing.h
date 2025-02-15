@@ -14,12 +14,12 @@
 #include <stdint.h>
 
 template<size_t W>
-class closest_occurrence {    // .query(i, c) returns the index of the closest occurrence of c from s[i] to s[s.size( ) - 1], in order of occurrence
+class closest {      // .query(i, c) returns the index of the closest occurrence of c from s[i] to s[s.size( ) - 1], in order of occurrence
    std::vector<std::array<int, W>> table;
 
 public:
-   closest_occurrence( ) = default;
-   closest_occurrence(const std::vector<uint8_t>& s)
+   closest( ) = default;
+   closest(const std::vector<uint8_t>& s)
    : table(s.size( )) {
       std::array<int, W> temp;
       std::fill(temp.begin( ), temp.end( ), s.size( ));
@@ -35,26 +35,48 @@ public:
 };
 
 template<size_t W>
-class next_distinct {      // .query(i) returns the list of distinct chars that appear from s[i] to s[s.size( ) - 1], in order of occurrence; each char is accompanied by its index and a prefix set union from s[i] to s[index]
+class distinct {      // .query(i) returns the list of indices of the distinct chars that appear from s[i] to s[s.size( ) - 1], in order of occurrence
+   std::vector<std::vector<int>> lists;
+
+public:
+   distinct( ) = default;
+   distinct(const std::vector<uint8_t>& s)
+   : lists(s.size( )) {
+      std::vector<int> temp;
+      for (int i = s.size( ) - 1; i >= 0; --i) {
+         std::erase_if(temp, [&](int index) {
+            return s[index] == s[i];
+         });
+         temp.insert(temp.begin( ), i);
+         lists[i] = temp;
+      }
+   }
+
+   const std::vector<int>& query(int i) const {
+      return lists[i];
+   }
+};
+
+template<size_t W>
+class distinct_with_prefix {     // .query(i) returns the list of indices of the distinct chars that appear from s[i] to s[s.size( ) - 1], in order of occurrence; each index is accompanied by a prefix set union of the symbols from s[i] to s[index]
    struct entry {
-      uint8_t symbol;
       int index;
-      std::bitset<W> set;
+      std::bitset<W> seen;
    };
    std::vector<std::vector<entry>> lists;
 
 public:
-   next_distinct( ) = default;
-   next_distinct(const std::vector<uint8_t>& s)
+   distinct_with_prefix( ) = default;
+   distinct_with_prefix(const std::vector<uint8_t>& s)
    : lists(s.size( )) {
       std::vector<entry> temp;
       for (int i = s.size( ) - 1; i >= 0; --i) {
          std::erase_if(temp, [&](const entry& e) {
-            return e.symbol == s[i];
+            return s[e.index] == s[i];
          });
-         temp.insert(temp.begin( ), entry(s[i], i, std::bitset<W>( )));
+         temp.insert(temp.begin( ), entry(i, std::bitset<W>( )));
          for (auto& e : temp) {
-            e.set[s[i]] = true;
+            e.seen[s[i]] = true;
          }
          lists[i] = temp;
       }
@@ -66,12 +88,12 @@ public:
 };
 
 template<size_t W>
-class order_distinct {     // .query(i) returns the list of distinct chars that appear from s[i] to s[s.size( ) - 1], in order of occurrence
+class order {     // .query(i) returns the list of distinct chars that appear from s[i] to s[s.size( ) - 1], in order of occurrence
    std::vector<std::array<uint8_t, W>> lists;
 
 public:
-   order_distinct( ) = default;
-   order_distinct(const std::vector<uint8_t>& s)
+   order( ) = default;
+   order(const std::vector<uint8_t>& s)
    : lists(s.size( )) {
       std::vector<uint8_t> temp;
       for (int i = s.size( ) - 1; i >= 0; --i) {
@@ -89,7 +111,7 @@ public:
 };
 
 template<size_t W>
-class sparse_table {       // .query(i, j) returns the set union of chars that appear from s[i] to s[j - 1]
+class sparse_table {    // .query(i, j) returns the set union of chars that appear from s[i] to s[j - 1]
    std::vector<std::vector<std::bitset<W>>> table;
 
 public:
@@ -120,7 +142,7 @@ public:
 };
 
 template<size_t W>
-class sparse_tree {       // .query(i, j) returns the set union of chars that appear from s[i] to s[j - 1]
+class sparse_tree {     // .query(i, j) returns the set union of chars that appear from s[i] to s[j - 1]
    struct node_segment {
       std::vector<std::bitset<W>> prefix, suffix;
    };

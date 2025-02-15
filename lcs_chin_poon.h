@@ -40,8 +40,8 @@ int chin_poon_main(const std::vector<uint8_t>& a, const std::vector<uint8_t>& b,
 
 template<size_t W>
 class chin_poon_topmost {
-   next_distinct<W> distinct_a;
-   closest_occurrence<W> closest_b;
+   distinct<W> distinct_a;
+   closest<W> closest_b;
 
 public:
    chin_poon_topmost(const std::vector<uint8_t>& a, const std::vector<uint8_t>& b)
@@ -51,10 +51,10 @@ public:
    std::pair<int, int> operator()(const std::vector<uint8_t>& a, const std::vector<uint8_t>& b, int ai, int aj, int bi, int bj) const {
       if (ai != aj && bi != bj) {
          const auto& list_a = distinct_a.query(ai);
-         for (auto it = list_a.begin( ); it != list_a.end( ) && it->index < aj; ++it) {
-            int bk = closest_b.query(bi, it->symbol);
+         for (auto it = list_a.begin( ); it != list_a.end( ) && *it < aj; ++it) {
+            int bk = closest_b.query(bi, a[*it]);
             if (bk < bj) {
-               return { it->index, bk };
+               return { *it, bk };
             }
          }
       }
