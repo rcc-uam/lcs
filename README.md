@@ -1,6 +1,6 @@
 # The Longest Common Subsequence Problem for Small Alphabets in the Word RAM Model
 
-This repository provides a sample implementation of the longest common subsequence (LCS) algorithms described in the paper "The Longest Common Subsequence Problem for Small Alphabets in the Word RAM" by Rodrigo Castro. The following files are provided.
+This repository provides a sample implementation of the longest common subsequence (LCS) algorithms described in the paper "The Longest Common Subsequence Problem for Small Alphabets in the Word RAM" by Rodrigo Castro. The following source code files are provided.
 
 * `generator.cpp`: A C++ program that generates a pair of random strings of a certain length and alphabet size, for which their longest common subsequence is expected to be a given percentage of their length. These strings are generated following the ideas of [Rick][1] .
 * `run_generator.php`: A PHP program that invokes the generator several times using distinct configuration parameters.
