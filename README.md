@@ -1,6 +1,6 @@
 # The Longest Common Subsequence Problem for Small Alphabets in the Word RAM Model
 
-This repository provides a sample implementation of the longest common subsequence (LCS) algorithms described in the paper "The Longest Common Subsequence Problem for Small Alphabets in the Word RAM" by Rodrigo Castro. The following source code files are provided.
+This repository provides a sample implementation of the longest common subsequence (LCS) algorithms described in the paper "The Longest Common Subsequence Problem for Small Alphabets in the Word RAM" by Rodrigo Castro and published in [Information Processing Letters][0]. The following source code files are provided.
 
 * `generator.cpp`: A C++ program that generates a pair of random strings of a certain length and alphabet size, for which their longest common subsequence is expected to be a given percentage of their length. These strings are generated following the ideas of [Rick][1] .
 * `run_generator.php`: A PHP program that invokes the generator several times using distinct configuration parameters.
@@ -34,6 +34,7 @@ mv sde-external-9.48.0-2024-11-25-lin /usr/bin/sde
 
 The provided algorithms were not optimized for microbenchmarking purposes. Although hardware-related phenomena may affect the competitiveness of the proposed algorithms (for example, memory effects or processor pipelining), the code favors readability in order to easily determine their asymptotic complexities. Some test cases are also included together with a log file, but the reported times are not conclusive since the tests were run under the *Intel® Software Development Emulator*, which was itself installed under a Linux Virtual machine. 
 
+  [0]: https://www.sciencedirect.com/science/article/abs/pii/S0020019025000237
   [1]: https://www.semanticscholar.org/paper/New-Algorithms-for-the-Longest-Common-Subsequence-Rick/28568a5d078ee484a30ef1b261a560612f5fc999
   [2]: https://arxiv.org/abs/2406.06321
   [3]: https://cp-algorithms.com/data_structures/sparse-table.html
